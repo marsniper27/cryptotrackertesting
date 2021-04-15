@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace cryptotrackertesting
         }
 
         BinanceAPI binanceAPI = new BinanceAPI();
+        float TotalBalanceBTC = 0;
 
         private void returnData_Click(object sender, EventArgs e)
         {
@@ -104,13 +106,33 @@ namespace cryptotrackertesting
             for (var count = 0; count < balances.Count(); count++)
             {
                 var coin = balances[count];
-                if (!(coin.Free == "0.00000000" & coin.Locked == "0.00000000")&!(coin.Free == "0.00" & coin.Locked == "0.00"))
+                if (!(coin.Free == "0.00000000" & coin.Locked == "0.00000000") & !(coin.Free == "0.00" & coin.Locked == "0.00"))
                 {
+                    var coinBTC = await binanceAPI.PriceRequest(coin.Asset + "BTC");
+                    if (coin.Asset != "BTC")
+                    {
+                        float coinfree = Convert.ToSingle(coin.Free);
+                        float coinLock = Convert.ToSingle(coin.Locked);
+                        float coinprice = Convert.ToSingle(coinBTC.Price);
+                        TotalBalanceBTC += (coinfree+coinLock)*coinprice;
+                    }
+                    else
+                    {
+                        TotalBalanceBTC += Convert.ToSingle(coin.Free) + Convert.ToSingle(coin.Locked);
+                    }
                     output += coin.Asset + ": Free: " + coin.Free + " Locked: " + coin.Locked + "\n";
                 }
             }
-
+            portfolioTotalBTC.Text = TotalBalanceBTC.ToString()+ " BTC";
+            var BTCvalue = await binanceAPI.PriceRequest("BTCUSDT");
+            PortfolioTotalText.Text = "$"+(Convert.ToSingle(BTCvalue.Price) * TotalBalanceBTC).ToString();
             this.AccountInfoLabel.Text = "\n Coins:\n" + output;
+            TotalBalanceBTC = 0;
+        }
+
+        private void pairName_Click(object sender, EventArgs e)
+        {
+            pairName.Text = "";
         }
     }
 }

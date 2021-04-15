@@ -56,8 +56,9 @@ namespace Binance
         {
             Wallet walletResult = new Wallet();
             string timeStamp = getTimestamp();
+            string start = (Int64.Parse(timeStamp) - 86400000/2).ToString();    //ms in 1 day 86400000
 
-            var getParams = "type=SPOT&timestamp=" + timeStamp;
+            var getParams = "type=SPOT&start=" + start + "&timestamp=" + timeStamp;
 
             string url = "https://api.binance.com/sapi/v1/accountSnapshot?" + getParams + "&signature=" + encodeSecret(getParams);
             using (var request = new HttpRequestMessage())

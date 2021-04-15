@@ -43,6 +43,7 @@
             this.pairName = new System.Windows.Forms.TextBox();
             this.AccountInfo = new System.Windows.Forms.Button();
             this.AccountInfoLabel = new System.Windows.Forms.Label();
+            this.portfolioTotalBTC = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +58,7 @@
             // PortfolioTotalText
             // 
             this.PortfolioTotalText.AutoSize = true;
-            this.PortfolioTotalText.Location = new System.Drawing.Point(38, 49);
+            this.PortfolioTotalText.Location = new System.Drawing.Point(31, 39);
             this.PortfolioTotalText.Name = "PortfolioTotalText";
             this.PortfolioTotalText.Size = new System.Drawing.Size(34, 13);
             this.PortfolioTotalText.TabIndex = 1;
@@ -96,7 +97,7 @@
             // CoinPrices
             // 
             this.CoinPrices.AutoSize = true;
-            this.CoinPrices.Location = new System.Drawing.Point(29, 125);
+            this.CoinPrices.Location = new System.Drawing.Point(12, 125);
             this.CoinPrices.Name = "CoinPrices";
             this.CoinPrices.Size = new System.Drawing.Size(58, 13);
             this.CoinPrices.TabIndex = 5;
@@ -124,7 +125,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 298);
+            this.label2.Location = new System.Drawing.Point(9, 406);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 8;
@@ -133,7 +134,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 320);
+            this.label3.Location = new System.Drawing.Point(9, 428);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 9;
@@ -141,7 +142,7 @@
             // 
             // APIKey
             // 
-            this.APIKey.Location = new System.Drawing.Point(90, 291);
+            this.APIKey.Location = new System.Drawing.Point(70, 399);
             this.APIKey.Name = "APIKey";
             this.APIKey.Size = new System.Drawing.Size(256, 20);
             this.APIKey.TabIndex = 10;
@@ -149,7 +150,7 @@
             // 
             // SecretKey
             // 
-            this.SecretKey.Location = new System.Drawing.Point(91, 313);
+            this.SecretKey.Location = new System.Drawing.Point(71, 421);
             this.SecretKey.Name = "SecretKey";
             this.SecretKey.Size = new System.Drawing.Size(255, 20);
             this.SecretKey.TabIndex = 11;
@@ -162,6 +163,7 @@
             this.pairName.Size = new System.Drawing.Size(149, 20);
             this.pairName.TabIndex = 12;
             this.pairName.Text = "Enter trading pair (ETHUSDT)";
+            this.pairName.Click += new System.EventHandler(this.pairName_Click);
             // 
             // AccountInfo
             // 
@@ -182,11 +184,21 @@
             this.AccountInfoLabel.TabIndex = 14;
             this.AccountInfoLabel.Text = "label4";
             // 
+            // portfolioTotalBTC
+            // 
+            this.portfolioTotalBTC.AutoSize = true;
+            this.portfolioTotalBTC.Location = new System.Drawing.Point(34, 24);
+            this.portfolioTotalBTC.Name = "portfolioTotalBTC";
+            this.portfolioTotalBTC.Size = new System.Drawing.Size(28, 13);
+            this.portfolioTotalBTC.TabIndex = 15;
+            this.portfolioTotalBTC.Text = "BTC";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.portfolioTotalBTC);
             this.Controls.Add(this.AccountInfoLabel);
             this.Controls.Add(this.AccountInfo);
             this.Controls.Add(this.pairName);
@@ -226,6 +238,7 @@
         private System.Windows.Forms.TextBox pairName;
         private System.Windows.Forms.Button AccountInfo;
         private System.Windows.Forms.Label AccountInfoLabel;
+        private System.Windows.Forms.Label portfolioTotalBTC;
     }
 }
 
