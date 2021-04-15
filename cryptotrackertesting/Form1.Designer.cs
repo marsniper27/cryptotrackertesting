@@ -41,6 +41,8 @@
             this.APIKey = new System.Windows.Forms.TextBox();
             this.SecretKey = new System.Windows.Forms.TextBox();
             this.pairName = new System.Windows.Forms.TextBox();
+            this.AccountInfo = new System.Windows.Forms.Button();
+            this.AccountInfoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +66,7 @@
             // returnData
             // 
             this.returnData.AutoSize = true;
-            this.returnData.Location = new System.Drawing.Point(177, 92);
+            this.returnData.Location = new System.Drawing.Point(177, 75);
             this.returnData.Name = "returnData";
             this.returnData.Size = new System.Drawing.Size(35, 13);
             this.returnData.TabIndex = 2;
@@ -102,7 +104,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(408, 49);
+            this.button3.Location = new System.Drawing.Point(261, 49);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(166, 23);
             this.button3.TabIndex = 6;
@@ -113,7 +115,7 @@
             // balancesLabel
             // 
             this.balancesLabel.AutoSize = true;
-            this.balancesLabel.Location = new System.Drawing.Point(405, 75);
+            this.balancesLabel.Location = new System.Drawing.Point(261, 75);
             this.balancesLabel.Name = "balancesLabel";
             this.balancesLabel.Size = new System.Drawing.Size(50, 13);
             this.balancesLabel.TabIndex = 7;
@@ -161,11 +163,32 @@
             this.pairName.TabIndex = 12;
             this.pairName.Text = "Enter trading pair (ETHUSDT)";
             // 
+            // AccountInfo
+            // 
+            this.AccountInfo.Location = new System.Drawing.Point(468, 49);
+            this.AccountInfo.Name = "AccountInfo";
+            this.AccountInfo.Size = new System.Drawing.Size(123, 23);
+            this.AccountInfo.TabIndex = 13;
+            this.AccountInfo.Text = "Get account Info";
+            this.AccountInfo.UseVisualStyleBackColor = true;
+            this.AccountInfo.Click += new System.EventHandler(this.AccountInfo_Click);
+            // 
+            // AccountInfoLabel
+            // 
+            this.AccountInfoLabel.AutoSize = true;
+            this.AccountInfoLabel.Location = new System.Drawing.Point(465, 78);
+            this.AccountInfoLabel.Name = "AccountInfoLabel";
+            this.AccountInfoLabel.Size = new System.Drawing.Size(35, 13);
+            this.AccountInfoLabel.TabIndex = 14;
+            this.AccountInfoLabel.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AccountInfoLabel);
+            this.Controls.Add(this.AccountInfo);
             this.Controls.Add(this.pairName);
             this.Controls.Add(this.SecretKey);
             this.Controls.Add(this.APIKey);
@@ -201,6 +224,8 @@
         private System.Windows.Forms.TextBox APIKey;
         private System.Windows.Forms.TextBox SecretKey;
         private System.Windows.Forms.TextBox pairName;
+        private System.Windows.Forms.Button AccountInfo;
+        private System.Windows.Forms.Label AccountInfoLabel;
     }
 }
 

@@ -65,7 +65,7 @@ namespace cryptotrackertesting
             SnapshotVo snapshot = new SnapshotVo();
             var data = new Data();
             Balance[] balances = data.Balances;
-            var balance = new Balance();
+           // var balance = new Balance();
             string output="";
             wallet = await binanceAPI.walletData();
             snapshot = wallet.SnapshotVos[0];
@@ -80,6 +80,37 @@ namespace cryptotrackertesting
             }
 
             this.balancesLabel.Text = "Value in BTC: " + data.TotalAssetOfBtc +"\n Coins:\n" + output; 
+        }
+
+        private async void AccountInfo_Click(object sender, EventArgs e)
+        {
+            if (APIKey.Text == "Enter API Key")
+            {
+                APIKey.Text = "QvNDAwk1bxFU51DBkZPNksEnY4uoEBJJP79FPzKq2LoCybeU9UkzuerurfMLvSsg";
+                SecretKey.Text = "6RemCIgFNMJG00T2wLMXgVOOz6cAbxcrm5PCisbL5Hpv7B5bLXB9JiW8TQzccW0T";
+            }
+
+            binanceAPI.Key = APIKey.Text;
+            binanceAPI.Secret = SecretKey.Text;
+
+            string output = "";
+            this.AccountInfoLabel.Text = "";
+            var accountInfo = new AccountInfo();
+
+            accountInfo = await binanceAPI.AccountInfo();
+            Balance[] balances = accountInfo.Balances;
+            
+
+            for (var count = 0; count < balances.Count(); count++)
+            {
+                var coin = balances[count];
+                if (!(coin.Free == "0.00000000" & coin.Locked == "0.00000000")&!(coin.Free == "0.00" & coin.Locked == "0.00"))
+                {
+                    output += coin.Asset + ": Free: " + coin.Free + " Locked: " + coin.Locked + "\n";
+                }
+            }
+
+            this.AccountInfoLabel.Text = "\n Coins:\n" + output;
         }
     }
 }

@@ -76,7 +76,32 @@ namespace Binance
                 }
             }
         }
-        
+
+        public async Task<AccountInfo> AccountInfo()
+        {
+            AccountInfo accountResult = new AccountInfo();
+            string timeStamp = getTimestamp();
+
+            var getParams = "timestamp=" + timeStamp;
+
+            string url = "https://api.binance.com/api/v3/account?" + getParams + "&signature=" + encodeSecret(getParams);
+            using (var request = new HttpRequestMessage())
+            {
+                request.RequestUri = new Uri(url);
+                request.Method = HttpMethod.Get;
+                request.Headers.Add("X-MBX-APIKEY", Key);
+
+
+                using (var response = await httpClient.SendAsync(request))
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+
+                    accountResult = JsonConvert.DeserializeObject<AccountInfo>(content);
+                    return accountResult;
+                }
+            }
+        }
+
         string getTimestamp()
         {
              long timeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
